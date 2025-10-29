@@ -1,6 +1,6 @@
 # Federated Unsupervised Semantic Segmentation - Supplementary Material
 
-This supplementary material provides implementation details, full reproducibility instructions, and dataset preparation guidelines for the FUSS framework. All experiments in the main paper are fully reproducible using the included codebase and configuration files.
+This is the official repository of Federated Unsupervised Semantic Segmentation (https://arxiv.org/abs/2505.23292). We provide implementation details, full reproducibility instructions, and dataset preparation guidelines for the FUSS framework. All experiments in the main paper are fully reproducible using the included codebase and configuration files.
 
 # Installation
 
