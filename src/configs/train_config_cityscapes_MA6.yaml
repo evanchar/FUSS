@@ -1,0 +1,108 @@
+output_root: ../
+pytorch_data_dir: "../fuss_data/"
+experiment_name: exp_base_simplefedavg
+log_dir: cityscapes
+azureml_logging: false
+submitting_to_aml: false
+num_workers: 8 
+max_steps: 1500 
+batch_size: 8
+num_neighbors: 2 
+dataset_name: cityscapes
+dataset_name1: MA6_cityscapes1
+dataset_name2: MA6_cityscapes2
+dataset_name3: MA6_cityscapes3
+dataset_name4: MA6_cityscapes4
+dataset_name5: MA6_cityscapes5
+dataset_name6: MA6_cityscapes6
+dataset_name_val: cityscapes
+save_dir: "../checkpoints/cityscapes/fed_checkpoints"
+client_num: 6
+aggregation_num: 10
+#aggregation_type: fedavg
+#aggregation_type: hierarchical # fedcc + kmeans
+#aggregation_type: hierarchical_mm #  fedcc + maximin
+#aggregation_type: weighted_fedavg 
+#aggregation_type: encoder # encoder aggregation only
+#aggregation_type: weighted_encoder # weighted encoder aggregation only
+#aggregation_type: weighted_not_encoder # weighted centroid aggregation only
+#aggregation_type: not_encoder # centroid aggregation only
+#aggregation_type: hierarchical_mm_not_encoder #  fedcc + maximin centroid only
+#aggregation_type: hierarchical_not_encoder #  fedcc + kmeans centroid only
+#aggregation_type: weighted_hierarchical_mm_not_encoder # weighted fedcc + maximin centroid only
+#aggregation_type: weighted_hierarchical_not_encoder # weighted fedcc + kmeans centroid only
+aggregation_type: weighted_hierarchical_mm # weighted fedcc + maximin
+#aggregation_type: weighted_hierarchical # weighted fedcc + kmeans
+
+# todo: fedprox
+fedprox: false
+proximal_mu: 0.001
+
+# todo: fedmoon
+fedmoon: false
+moon_temperature: 0.5
+moon_weight: 1
+
+dir_dataset_name: null
+dir_dataset_n_classes: 5
+has_labels: false
+crop_type: five
+#crop_type: ~
+crop_ratio: 0.5
+res: 224
+loader_crop_type: center
+extra_clusters: 0
+use_true_labels: false
+use_recalibrator: false
+model_type: vit_base
+arch: dino
+use_fit_model: false
+dino_feat_type: feat
+projection_type: nonlinear
+dino_patch_size: 8
+granularity: 1
+continuous: true
+dim: 70
+dropout: true
+zero_clamp: true
+lr: 0.0005
+pretrained_weights: null
+use_salience: false
+stabalize: false
+stop_at_zero: true
+pointwise: true
+feature_samples: 11
+neg_samples: 5
+aug_alignment_weight: 0.0
+correspondence_weight: 1.
+
+neg_inter_weight: 0.9058762625226623
+pos_inter_weight: 0.577453483136995
+pos_intra_weight: 1
+neg_inter_shift: 0.31361241889448443
+pos_inter_shift: 0.1754346515479633
+pos_intra_shift: 0.45828472207
+
+rec_weight: 0.0
+repulsion_weight: 0.0
+crf_weight: 0.0
+alpha: 0.5
+beta: 0.15
+gamma: 0.05
+w1: 10.0
+w2: 3.0
+shift: 0.0
+crf_samples: 1000
+color_space: rgb
+reset_probe_steps: null
+n_images: 5
+scalar_log_freq: 10
+checkpoint_freq: 50
+val_freq: 100
+hist_freq: 100
+
+hydra:
+  run:
+    dir: "."
+
+

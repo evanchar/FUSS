@@ -1,0 +1,107 @@
+output_root: ../
+pytorch_data_dir: "../fuss_data/"
+experiment_name: exp_base_simplefedavg
+log_dir: cocostuff27
+azureml_logging: false
+submitting_to_aml: false
+num_workers: 8
+max_steps: 1000
+batch_size: 8
+num_neighbors: 2 # TODO: TO REDUCE STOCHASTICITY
+
+dataset_name: cocostuff27
+dataset_name1: MA18_cocostuff271
+dataset_name2: MA18_cocostuff272
+dataset_name3: MA18_cocostuff273
+dataset_name4: MA18_cocostuff274
+dataset_name5: MA18_cocostuff275
+dataset_name6: MA18_cocostuff276
+dataset_name7: MA18_cocostuff277
+dataset_name8: MA18_cocostuff278
+dataset_name9: MA18_cocostuff279
+dataset_name10: MA18_cocostuff2710
+dataset_name11: MA18_cocostuff2711
+dataset_name12: MA18_cocostuff2712
+dataset_name13: MA18_cocostuff2713
+dataset_name14: MA18_cocostuff2714
+dataset_name15: MA18_cocostuff2715
+dataset_name16: MA18_cocostuff2716
+dataset_name17: MA18_cocostuff2717
+dataset_name18: MA18_cocostuff2718
+
+dataset_name_val: cocostuff27
+save_dir: "../checkpoints/cityscapes/fed_checkpoints"
+client_num: 18
+aggregation_num: 10
+
+#aggregation_type: fedavg
+aggregation_type: weighted_hierarchical_mm # weighted fedcc + maximin
+
+# todo: fedprox
+fedprox: false
+proximal_mu: 0.001
+
+# todo: fedmoon
+fedmoon: false
+moon_temperature: 0.5
+moon_weight: 1
+
+dir_dataset_name: null
+dir_dataset_n_classes: 5
+has_labels: false
+crop_type: null
+crop_ratio: 0.5
+res: 224
+loader_crop_type: center
+extra_clusters: 0
+use_true_labels: false
+use_recalibrator: false
+model_type: vit_base
+arch: dino
+use_fit_model: false
+dino_feat_type: feat
+projection_type: nonlinear
+dino_patch_size: 8
+granularity: 1
+continuous: true
+dim: 70
+dropout: true
+zero_clamp: true
+lr: 0.0005
+pretrained_weights: null
+use_salience: false
+stabalize: false
+stop_at_zero: true
+pointwise: true
+feature_samples: 11
+neg_samples: 5
+aug_alignment_weight: 0.0
+correspondence_weight: 1.0
+neg_inter_weight: 0.1538476246415498
+pos_inter_weight: 1
+pos_intra_weight: 0.1
+neg_inter_shift: 1
+pos_inter_shift: 0.2
+pos_intra_shift: 0.12
+rec_weight: 0.0
+repulsion_weight: 0.0
+crf_weight: 0.0
+alpha: 0.5
+beta: 0.15
+gamma: 0.05
+w1: 10.0
+w2: 3.0
+shift: 0.0
+crf_samples: 1000
+color_space: rgb
+reset_probe_steps: null
+n_images: 5
+scalar_log_freq: 10
+checkpoint_freq: 50
+val_freq: 100
+hist_freq: 100
+hydra:
+  run:
+    dir: "."
+
+

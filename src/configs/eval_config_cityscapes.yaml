@@ -1,0 +1,93 @@
+output_root: '../'
+pytorch_data_dir: '../fuss_data/'
+#experiment_name: "cityscapes"
+experiment_name: "cocostuff27"
+res: 320
+batch_size: 8
+num_workers: 12 # changed for fast cocostuff
+run_picie: False
+run_crf: True
+run_prediction: True
+dark_mode: True
+use_ddp: False
+
+model_paths:
+  - ""
+hydra:
+  run:
+    dir: "."
+  output_subdir: ~
+  #job_logging: "disabled"
+  #hydra_logging: "disabled"
+
+# Additions from train_segment to fix the ba
+continuous: true
+dim: 70
+#dim: 768 # for text centroids of clip
+dropout: true
+zero_clamp: true
+lr: 0.0005
+pretrained_weights: null
+use_salience: false
+stabalize: false
+stop_at_zero: true
+pointwise: true
+feature_samples: 11
+neg_samples: 0
+aug_alignment_weight: 0.0
+correspondence_weight: 1.0
+
+# Cityscapes 10/3
+
+neg_inter_weight: 0.9058762625226623
+pos_inter_weight: 0.577453483136995
+pos_intra_weight: 1
+
+neg_inter_shift: 0.31361241889448443
+pos_inter_shift: 0.1754346515479633
+pos_intra_shift: 0.45828472207
+
+rec_weight: 0.0
+repulsion_weight: 0.0
+crf_weight: 0.0
+alpha: 0.5
+beta: 0.15
+gamma: 0.05
+w1: 10.0
+w2: 3.0
+shift: 0.0
+crf_samples: 1000
+color_space: rgb
+reset_probe_steps: null
+n_images: 5
+scalar_log_freq: 10
+checkpoint_freq: 50
+val_freq: 100
+hist_freq: 100
+arch: dino
+use_fit_model: false
+dino_feat_type: feat
+projection_type: nonlinear
+dino_patch_size: 8
+granularity: 1
+
+# Used if dataset_name is "directory"
+dir_dataset_name: ~
+dir_dataset_n_classes: 5
+
+has_labels: False
+crop_type: "five"
+crop_ratio: .5
+loader_crop_type: "center"
+
+# Model Params
+extra_clusters: 0
+use_true_labels: False
+use_recalibrator: False
+#model_type: "vit_small"
+model_type: "vit_base"
+
+#num_neighbors: 7
+num_neighbors: 2
+# dataset_name: "cocostuff27"
+dataset_name: "cityscapes"

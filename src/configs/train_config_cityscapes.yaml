@@ -1,0 +1,104 @@
+output_root: ../
+pytorch_data_dir: "../fuss_data/"
+experiment_name: "exp1"
+# log_dir: "cocostuff27"
+log_dir: "cityscapes"
+#azureml_logging: True #default but produced error
+azureml_logging: False
+submitting_to_aml: False
+
+# Loader params
+num_workers: 8
+max_steps: 25000  # default
+batch_size: 8
+
+#num_neighbors: 7
+num_neighbors: 2  
+# dataset_name: "cocostuff27"
+dataset_name: "cityscapes"
+
+# Used if dataset_name is "directory"
+dir_dataset_name: ~
+dir_dataset_n_classes: 5
+
+has_labels: False
+crop_type: "five"
+crop_ratio: .5
+res: 224
+loader_crop_type: "center"
+
+# Model Params
+extra_clusters: 0
+use_true_labels: False
+use_recalibrator: False
+#model_type: "vit_small"
+model_type: "vit_base"
+arch: "dino"
+use_fit_model: False
+dino_feat_type: "feat"
+projection_type: "nonlinear"
+#projection_type: linear
+dino_patch_size: 8
+granularity: 1
+continuous: True
+dim: 70
+#dim: 768
+dropout: True
+zero_clamp: True
+
+lr: 5e-4
+pretrained_weights: ~
+use_salience: False
+stabalize: False
+stop_at_zero: True
+
+# Feature Contrastive params
+pointwise: True
+feature_samples: 11
+neg_samples: 5
+#neg_samples: 0 # TODO: changed to because guided with text may not need negative samples
+aug_alignment_weight: 0.0
+
+correspondence_weight: 1.0
+
+
+# Cityscapes 10/3
+
+neg_inter_weight: 0.9058762625226623
+pos_inter_weight: 0.577453483136995
+pos_intra_weight: 1
+
+neg_inter_shift: 0.31361241889448443
+pos_inter_shift: 0.1754346515479633
+pos_intra_shift: 0.45828472207
+
+rec_weight: 0.0
+repulsion_weight: 0.0
+
+# CRF Params
+crf_weight: 0.0
+alpha: .5
+beta: .15
+gamma: .05
+w1: 10.0
+w2: 3.0
+shift: 0.00
+crf_samples: 1000
+color_space: "rgb"
+
+reset_probe_steps: ~
+
+# Logging params
+n_images: 5
+scalar_log_freq: 10
+checkpoint_freq: 50
+val_freq: 100
+hist_freq: 100
+
+
+hydra:
+  run:
+    dir: "."
+  output_subdir: ~
+  #job_logging: "disabled"
+  #hydra_logging: "disabled"
